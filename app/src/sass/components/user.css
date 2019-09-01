@@ -1,0 +1,36 @@
+.user {
+  position: relative;
+  display: flex;
+  margin: 10px;
+  background: white; }
+  .user .item {
+    display: inline-block; }
+  .user .info {
+    padding-left: 10px;
+    font-family: "resagokrregular";
+    text-align: left; }
+    .user .info .name {
+      font-size: 1.4em;
+      color: #161c24;
+      margin-bottom: 0; }
+    .user .info .email {
+      font-size: 1em;
+      color: #393b3d; }
+  .user .user-buttons {
+    position: absolute;
+    right: 0;
+    bottom: 0; }
+    .user .user-buttons .user-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      width: 50px;
+      height: 50px;
+      margin-left: 5px; }
+      .user .user-buttons .user-btn:hover {
+        cursor: pointer; }
+      .user .user-buttons .user-btn.edit {
+        background: #546455; }
+      .user .user-buttons .user-btn.delete {
+        background: #7c6662; }

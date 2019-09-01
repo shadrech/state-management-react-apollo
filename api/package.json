@@ -1,0 +1,32 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Api for user admin project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node target/index.js",
+    "prestart": "./node_modules/.bin/babel src -d target",
+    "start:watch": "./node_modules/.bin/nodemon -w ./src --exec babel-node ./src/index.js",
+    "db:start": "docker run --name mongo_db -p 27017:27017 -d --rm mongo",
+    "db:stop": "docker stop mongo_db"
+  },
+  "author": "Tatenda Chawanzwa <tatenda@chadigital.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-json-validator-middleware": "^1.2.0",
+    "express-jwt": "^5.3.0",
+    "mongoose": "^5.6.11",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "nodemon": "^1.12.1"
+  }
+}
