@@ -1,0 +1,44 @@
+type Worker {
+  id: ID
+  firstName: String
+  lastName: String
+  email: String
+  bio: String
+  skills: [String]
+  organization: Organization
+}
+
+input CreateWorkerInput {
+  firstName: String!
+  lastName: String
+  email: String!
+  bio: String!
+  skills: [String!]!
+  organization: ID
+}
+
+input UpdateWorkerInput {
+  firstName: String
+  lastName: String
+  email: String
+  bio: String
+  skills: [String!]
+  organization: ID
+}
+
+input WorkerOptionsInput {
+  sort: String
+  limit: Int!
+  skip: Int
+}
+
+extend type Query {
+  worker(id: ID!): Worker!
+  workers(conditions: JSON, options: WorkerOptionsInput!): [Worker]!
+}
+
+extend type Mutation {
+  createWorker(worker: CreateWorkerInput!): Worker
+  updateWorker(id: ID!, worker: UpdateWorkerInput!): Worker
+  deleteWorker(id: ID!): Worker
+}

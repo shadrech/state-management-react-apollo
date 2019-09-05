@@ -1,0 +1,29 @@
+type Organization {
+  id: ID
+  name: String
+  description: String
+  logo: String
+  workers: [Worker]
+}
+
+input CreateOrganizationInput {
+  name: String!
+  description: String!
+  logo: String!
+  workers: [ID]
+}
+
+input OrganizationOptionsInput {
+  sort: String
+  limit: Int!
+  skip: Int
+}
+
+extend type Query {
+  organization(id: ID!): Organization!
+  organizations(conditions: JSON, options: OrganizationOptionsInput!): [Organization]!
+}
+
+extend type Mutation {
+  createOrganization(organization: CreateOrganizationInput!): Organization
+}

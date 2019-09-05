@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-export function fetch(opts) {
-  const Worker = mongoose.model("Worker");
-  return Worker.fetch();
+export function fetch(conditions = {}, options = {}) {
+  return mongoose.model("Worker")
+    .find(conditions, null, options);
 }
 
 export function create(fields) {
@@ -13,7 +13,7 @@ export function create(fields) {
     email: fields.email,
     bio: fields.bio,
     skills: fields.skills,
-    organizationId: fields.organizationId
+    organization: fields.organization
   });
 
   return worker.save();

@@ -27,20 +27,13 @@ const schema = new mongoose.Schema({
     trim: true
   },
   skills: [String],
-  organizationId: String
+  organization: String
 });
 
 class Worker {
+
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
-  }
-
-  get getOrganization() {
-    
-  }
-
-  static fetch(opts = {}) {
-    return this.find();
   }
 
 }
