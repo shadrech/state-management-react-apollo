@@ -1,0 +1,10 @@
+query workers($conditions: JSON, $options: WorkerOptionsInput!) {
+  workers(conditions: $conditions, options: $options) {
+    id
+    firstName
+    lastName
+    email
+    skills
+    bio
+  }
+}

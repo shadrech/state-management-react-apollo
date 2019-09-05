@@ -11,8 +11,6 @@ export default {
   },
 
   Worker: {
-    organization: (root, args, { models: { Organization } }) => {
-      return Organization.fetch({ organization: root.organization }).then(result => result[0]);
-    }
+    organization: (root, args, { models: { Organization } }) => Organization.fetch({ _id: root.organization }).then(result => result[0])
   }
 }
