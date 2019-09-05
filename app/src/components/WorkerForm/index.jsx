@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
 import { Form, Input, FormGroup, FormSubmitButton, TextArea, ButtonsWrapper } from "./styles";
+import createWorkerMutation from "../../graphql/mutations/createWorker.graphql";
+import workersQuery from "../../graphql/queries/workers.graphql";
 
 const WorkerForm = props => {
   const worker = null; //TODO: get worker from cache
@@ -8,17 +11,42 @@ const WorkerForm = props => {
   const [lastName, setLastName] = useState(worker ? worker.lastName : "");
   const [email, setEmail] = useState(worker ? worker.email : "");
   const [bio, setBio] = useState("");
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState("");
+  const [createMutation, _] = useMutation(createWorkerMutation,  { update: (cache, { data: { createWorker } }) => {
+    const { workers } = cache.readQuery({ query: workersQuery, variables: {
+      options: { limit: 200 },
+      conditions: {}
+    } });
+    cache.writeQuery({
+      query: workersQuery,
+      variables: {
+        options: { limit: 200 },
+        conditions: {}
+      },
+      data: {
+        workers: workers.concat([createWorker])
+      }
+    });
+  } });
   const handleFormSubmit = () => {
     let fields = {
       firstName,
       lastName,
-      email
+      email,
+      bio,
+      skills
     };
     if (worker) {
       // update user
     } else {
-      // create user
+      createMutation({
+        variables: {
+          worker: {
+            ...fields,
+            skills: skills.split(",")
+          }
+        }
+      })
     }
     props.history.push("/");
   }

@@ -1,0 +1,7 @@
+#import "../queries/workerFragment.graphql"
+
+mutation createWorker($worker: CreateWorkerInput!) {
+  createWorker(worker: $worker) {
+    ...WorkerFragment
+  }
+}

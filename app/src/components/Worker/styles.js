@@ -134,7 +134,7 @@ export const ProfileImage = styled.img`
 export const Divider = styled.p`
   position: relative;
   display: block;
-  margin: .5rem 1.5rem 0;
+  margin: .5rem;
   text-align: left;
   width: 100%;
   font-size: .8rem;

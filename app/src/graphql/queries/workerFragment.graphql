@@ -1,0 +1,13 @@
+fragment WorkerFragment on Worker {
+  id
+  firstName
+  lastName
+  email
+  skills
+  bio
+  organization {
+    name
+    description
+    logo
+  }
+}

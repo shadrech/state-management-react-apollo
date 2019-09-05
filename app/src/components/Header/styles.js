@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Wrapper = styled.header`
   position: fixed;
+  z-index: 500;
   top: 0;
   left: 0;
   width: 100%;

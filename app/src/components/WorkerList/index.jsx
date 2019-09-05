@@ -8,7 +8,7 @@ import workersQuery from "../../graphql/queries/workers.graphql";
 export default () => {
   const { loading, error, data } = useQuery(workersQuery, {
     variables: {
-      options: { limit:200 },
+      options: { limit: 200 },
       conditions: {}
     }
   });
