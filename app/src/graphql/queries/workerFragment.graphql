@@ -5,6 +5,7 @@ fragment WorkerFragment on Worker {
   email
   skills
   bio
+  isOpen @client
   organization {
     name
     description
