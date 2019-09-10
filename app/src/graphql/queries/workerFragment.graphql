@@ -6,9 +6,4 @@ fragment WorkerFragment on Worker {
   skills
   bio
   isOpen @client
-  organization {
-    name
-    description
-    logo
-  }
 }
