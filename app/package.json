@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/react-hooks": "^3.0.1",
     "@svgr/parcel-plugin-svgr": "^4.3.2",
+    "apollo-boost": "^0.4.4",
+    "graphql": "^14.5.4",
     "react": "^16.8.3",
     "react-collapse": "^4.0.3",
     "react-confirm-alert": "^1.0.8",
@@ -14,6 +17,7 @@
   },
   "scripts": {
     "start": "parcel ./src/index.html",
+    "prestart": "rm -rf .cache",
     "build": "parcel build ./src/index.html",
     "test": ""
   },

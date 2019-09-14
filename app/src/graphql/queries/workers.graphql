@@ -1,0 +1,7 @@
+#import "../queries/workerFragment.graphql"
+
+query workers($conditions: JSON, $options: WorkerOptionsInput!) {
+  workers(conditions: $conditions, options: $options) {
+    ...WorkerFragment
+  }
+}

@@ -34,6 +34,7 @@ input WorkerOptionsInput {
 
 extend type Query {
   worker(id: ID!): Worker!
+  # Fetches a group of Workers. "conditions" JSON accepts values found https://docs.mongodb.com/manual/reference/operator/query
   workers(conditions: JSON, options: WorkerOptionsInput!): [Worker]!
 }
 

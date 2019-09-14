@@ -1,0 +1,9 @@
+fragment WorkerFragment on Worker {
+  id
+  firstName
+  lastName
+  email
+  skills
+  bio
+  isOpen @client
+}

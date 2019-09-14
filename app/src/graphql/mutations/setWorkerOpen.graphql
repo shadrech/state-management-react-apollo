@@ -1,0 +1,3 @@
+mutation setWorkerOpen($id: ID!, $isOpen: Boolean) {
+  setWorkerOpen(id: $id, isOpen: $isOpen) @client
+}

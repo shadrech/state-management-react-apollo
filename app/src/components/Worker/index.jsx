@@ -1,10 +1,12 @@
 import React from "react";
+import { useMutation } from '@apollo/react-hooks';
 import { Collapse } from "react-collapse";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { Worker, WorkerButtons, EditButton, DeleteButton, WorkerInfo, InfoEmail, InfoName, BgImage, ProfileImage, WorkerBio, InfoBio, InfoWrapper, InfoSkill, InfoSkillTitle, Divider } from "./styles";
+import setWorkerOpenMutation from "../../graphql/mutations/setWorkerOpen.graphql";
 
-export default props => {
+const WorkerComponent = props => {
   const { worker } = props;
   const deleteWorker = () => confirmAlert({
     title: "Confirm delete",
@@ -15,6 +17,7 @@ export default props => {
     onCancel: () => console.log("Not today")
   });
   const rand = Math.random();
+  const [setWorkerOpen] = useMutation(setWorkerOpenMutation);
 
   return (
     <Worker>
@@ -30,11 +33,16 @@ export default props => {
           <InfoEmail>{worker.email}</InfoEmail>
         </WorkerInfo>
       </InfoWrapper>
-      <Divider isOpened={false}>
+      <Divider isOpened={worker.isOpen} onClick={() => {
+        setWorkerOpen({ variables: {
+          id: worker.id,
+          isOpen: !worker.isOpen
+        } });
+      }}>
         view more
         <i className="fas fa-angle-down"></i>
       </Divider>
-      <Collapse isOpened={false}>
+      <Collapse isOpened={worker.isOpen}>
         <WorkerBio>
           <InfoBio>{worker.bio}</InfoBio>
           <div>
@@ -46,3 +54,5 @@ export default props => {
     </Worker>
   );
 }
+
+export default WorkerComponent;
