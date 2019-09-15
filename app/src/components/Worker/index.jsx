@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { Collapse } from "react-collapse";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import { Worker, WorkerButtons, EditButton, DeleteButton, WorkerInfo, InfoEmail, InfoName, BgImage, ProfileImage, WorkerBio, InfoBio, InfoWrapper, InfoSkill, InfoSkillTitle, Divider } from "./styles";
+import { Worker, WorkerButtons, EditButton, DeleteButton, WorkerInfo, InfoEmail, InfoName, BgImage, ProfileImage, WorkerBio, InfoBio, InfoWrapper, InfoSkill, InfoSkillTitle, Divider, SkillsWrapper } from "./styles";
 import setWorkerOpenMutation from "../../graphql/mutations/setWorkerOpen.graphql";
 
 const WorkerComponent = props => {
@@ -45,14 +45,14 @@ const WorkerComponent = props => {
       <Collapse isOpened={worker.isOpen}>
         <WorkerBio>
           <InfoBio>{worker.bio}</InfoBio>
-          <div>
+          <SkillsWrapper>
             <InfoSkillTitle>Skills</InfoSkillTitle>
             {worker.skills.map(skill => <InfoSkill key={skill}>{skill}</InfoSkill>)}
-          </div>
+          </SkillsWrapper>
         </WorkerBio>
       </Collapse>
     </Worker>
   );
 }
 
-export default WorkerComponent;
+export default React.memo(WorkerComponent);

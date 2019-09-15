@@ -78,7 +78,7 @@ export const NavItem = styled(Link)`
   i {
     order: 1;
     flex-grow: 2;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     &::before {
       top: .4rem;
       position: relative;
@@ -86,9 +86,9 @@ export const NavItem = styled(Link)`
   }
   p {
     font-family: sans-serif, Arial, Helvetica;
-    font-size: .8rem;
+    font-size: .7rem;
     order: 2;
-    margin: 0 0 5px 0;
+    margin: 0 0 10px 0;
   }
 `;
 

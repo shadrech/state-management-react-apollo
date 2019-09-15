@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -26,8 +27,12 @@ export const App = styled.div`
   box-sizing: border-box;
   width: 100%;
   margin-top: 50px;
-  padding: 0 ${props => props.theme.sidePadding};
+  padding: 0 14rem;
   text-align: center;
+
+  ${breakpoint('mobile', 'desktop')`
+    padding: 0 4rem;
+  `}
 `;
 
 export const Wrapper = styled.div`

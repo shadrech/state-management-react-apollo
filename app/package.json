@@ -13,7 +13,8 @@
     "react-dom": "^16.9.0",
     "react-motion": "^0.5.2",
     "react-router-dom": "^5.0.1",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "styled-components-breakpoint": "^2.1.1"
   },
   "scripts": {
     "start": "parcel ./src/index.html",

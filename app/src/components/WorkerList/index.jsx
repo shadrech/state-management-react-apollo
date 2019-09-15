@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import Worker from "../Worker";
-import { StyledLink } from "./styles";
+import { StyledLink, WorkersWrapper } from "./styles";
 import { Wrapper } from "../App/styles";
 import workersQuery from "../../graphql/queries/workers.graphql";
 
@@ -17,7 +17,9 @@ export default () => {
       <StyledLink to="/worker/create">
         <i className="fas fa-user-plus"></i>
       </StyledLink>
-      {!loading && !error && data.workers.map(worker => <Worker key={worker.id} worker={worker} />)}
+      <WorkersWrapper>
+        {!loading && !error && data.workers.map(worker => <Worker key={worker.id} worker={worker} />)}
+      </WorkersWrapper>
     </Wrapper>
   );
 }

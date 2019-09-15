@@ -16,3 +16,9 @@ export const StyledLink = styled(Link)`
   transform: translateX(-50%);
   text-decoration: none;
 `;
+
+export const WorkersWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;

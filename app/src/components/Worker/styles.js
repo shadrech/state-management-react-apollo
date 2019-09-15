@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoint from "styled-components-breakpoint";
 import { Link } from "react-router-dom";
 import Banner from "../../assets/banner.svg";
 
@@ -6,10 +7,16 @@ export const Worker = styled.div`
   position: relative;
   margin: 10px;
   background: white;
+  width: calc(50% - 10px - 1rem);
+  height: max-content;
 
   & > * {
     display: inline-block;
   }
+
+  ${breakpoint('mobile', 'desktop')`
+    width: calc(100% - 10px - 1rem);
+  `}
 `;
 
 export const InfoWrapper = styled.div`
@@ -17,6 +24,10 @@ export const InfoWrapper = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
+`;
+
+export const SkillsWrapper = styled.div`
+  margin-bottom: .75rem;
 `;
 
 export const WorkerInfo = styled.div`
@@ -67,6 +78,7 @@ export const InfoSkill = styled(InfoBio)`
   display: inline-block;
   padding: 0 1.5rem;
   margin-top: 0;
+  margin-bottom: 0;
   &::after {
     content: "•";
     position: absolute;
@@ -134,7 +146,7 @@ export const ProfileImage = styled.img`
 export const Divider = styled.p`
   position: relative;
   display: block;
-  margin: .5rem;
+  margin: .5rem .5rem 0;
   text-align: left;
   width: 100%;
   font-size: .8rem;
@@ -149,11 +161,12 @@ export const Divider = styled.p`
   &::after {
     content: "";
     height: 1px;
-    background: ${props => props.theme.darkBlue};
-    width: 85%;
+    background: grey;
+    width: calc(100% - 6.5rem);
     position: absolute;
     top: 50%;
-    transform: translateY(-50%) scaleY(.4);
+    transform: scaleY(.4);
+    opacity: .4;
   }
   &:hover {
     cursor: pointer;
