@@ -12,6 +12,7 @@ export default () => {
       conditions: {}
     }
   });
+  console.log('DATA--->', data)
   return (
     <Wrapper>
       <StyledLink to="/worker/create">

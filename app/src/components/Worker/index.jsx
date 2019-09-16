@@ -1,5 +1,5 @@
 import React from "react";
-import { useMutation } from '@apollo/react-hooks';
+import * as ApolloHooks from '@apollo/react-hooks';
 import { Collapse } from "react-collapse";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -17,7 +17,7 @@ const WorkerComponent = props => {
     onCancel: () => console.log("Not today")
   });
   const rand = Math.random();
-  const [setWorkerOpen] = useMutation(setWorkerOpenMutation);
+  const [setWorkerOpen] = ApolloHooks.useMutation(setWorkerOpenMutation);
 
   return (
     <Worker>
@@ -33,7 +33,7 @@ const WorkerComponent = props => {
           <InfoEmail>{worker.email}</InfoEmail>
         </WorkerInfo>
       </InfoWrapper>
-      <Divider isOpened={worker.isOpen} onClick={() => {
+      <Divider data-test-id="worker-divider" isOpened={worker.isOpen} onClick={() => {
         setWorkerOpen({ variables: {
           id: worker.id,
           isOpen: !worker.isOpen
