@@ -14,7 +14,8 @@ const workers = [{
   email: 'tatenda@chadigital.com',
   isOpen: false,
   bio: 'My short life story blah blah blah',
-  skills: ['Node', 'React', 'Basketball', 'Speaker']
+  skills: ['Node', 'React', 'Basketball', 'Speaker'],
+  __typename: 'Worker'
 }, {
   id: 2,
   firstName: 'Jon',
@@ -22,7 +23,8 @@ const workers = [{
   email: 'j@b.com',
   isOpen: false,
   bio: 'The Jon bio',
-  skills: ['Not sure', 'Teacher']
+  skills: ['Not sure', 'Teacher'],
+  __typename: 'Worker'
 }];
 
 const defaultMocks = [{
@@ -41,7 +43,7 @@ const defaultMocks = [{
 function renderComponent(component, mocks = defaultMocks, cache = null) {
   const defaultCache = cache ? cache : new InMemoryCache();
   return mount(
-    <MockedProvider mock={mocks}>
+    <MockedProvider mock={mocks} cache={cache}>
       <MemoryRouter>
         {component}
       </MemoryRouter>
@@ -53,6 +55,7 @@ describe('WorkerList', () => {
 
   test('should render as expected', () => {
     const component = renderComponent(<WorkerList />);
+    component.update()
     console.log(component.debug());
   });
 
