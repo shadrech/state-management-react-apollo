@@ -9,6 +9,7 @@
       {
         "loose": true
       }
-    ]
+    ],
+    "import-graphql"
   ]
 }

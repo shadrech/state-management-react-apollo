@@ -1,10 +1,11 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
+import wait from "waait";
 import { MemoryRouter } from "react-router";
 import { MockedProvider } from "@apollo/react-testing";
-import wait from "waait";
 import WorkerList from ".";
 import workersQuery from "../../graphql/queries/workers.graphql";
+import resolvers from "../../graphql/resolvers";
 import { InMemoryCache } from 'apollo-boost';
 
 const workers = [{
@@ -37,24 +38,27 @@ const defaultMocks = [{
   },
   result: {
     data: { workers }
-  },
+  }
 }];
 
-function renderComponent(component, { mocks = defaultMocks, cache } = {}) {
-  return mount(
-    <MockedProvider mock={mocks} cache={cache || new InMemoryCache()}>
+async function renderComponent(component, mocks = defaultMocks) {
+  const cache = new InMemoryCache();
+  const app = mount(
+    <MockedProvider mock={mocks} addTypename={false} cache={cache} resolvers={resolvers}>
       <MemoryRouter>
         {component}
       </MemoryRouter>
     </MockedProvider>
   );
+  await wait(10);
+  app.update();
+  return app;
 }
 
 describe('WorkerList', () => {
 
-  test('should render as expected', () => {
-    const component = renderComponent(<WorkerList />);
-    component.update()
+  test('should render as expected', async () => {
+    const component = await renderComponent(<WorkerList />);
     console.log(component.debug());
   });
 
