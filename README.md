@@ -1,3 +1,6 @@
+# DEPRECATED!
+## Use this [repo](https://github.com/shadrech/linked-app) for updated and upcoming talks
+
 # LinkedApp
 
 Code for my [talk](https://skillsmatter.com/skillscasts/14361-frontend-state-management-with-react-apollo) on Frontend Management With React Apollo
