@@ -40,10 +40,9 @@ const defaultMocks = [{
   },
 }];
 
-function renderComponent(component, mocks = defaultMocks, cache = null) {
-  const defaultCache = cache ? cache : new InMemoryCache();
+function renderComponent(component, { mocks = defaultMocks, cache } = {}) {
   return mount(
-    <MockedProvider mock={mocks} cache={cache}>
+    <MockedProvider mock={mocks} cache={cache || new InMemoryCache()}>
       <MemoryRouter>
         {component}
       </MemoryRouter>

@@ -2,7 +2,6 @@ import React from "react";
 import { mount } from "enzyme";
 import { MemoryRouter } from "react-router";
 import { MockedProvider } from "@apollo/react-testing";
-import * as ApolloHooks from '@apollo/react-hooks';
 import { InMemoryCache } from 'apollo-boost';
 import Worker from ".";
 import setWorkerOpenMutation from "../../graphql/mutations/setWorkerOpen.graphql";
@@ -25,11 +24,10 @@ const worker = {
   skills: ['Node', 'React', 'Basketball', 'Speaker']
 }
 
-function renderComponent(component, mocks = defaultMocks, cache = null) {
-  const defaultCache = cache ? cache : new InMemoryCache();
+function renderComponent(component, { mocks = defaultMocks, cache, resolvers } = {}) {
   return mount(
     <MemoryRouter>
-      <MockedProvider mock={mocks} cache={defaultCache}>
+      <MockedProvider mock={mocks} cache={cache || new InMemoryCache()} resolvers={resolvers}>
         {component}
       </MockedProvider>
     </MemoryRouter>

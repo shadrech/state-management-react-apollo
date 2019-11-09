@@ -1,5 +1,5 @@
 import React from "react";
-import * as ApolloHooks from '@apollo/react-hooks';
+import { useMutation } from 'react-apollo';
 import { Collapse } from "react-collapse";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -17,7 +17,7 @@ const WorkerComponent = props => {
     onCancel: () => console.log("Not today")
   });
   const rand = Math.random();
-  const [setWorkerOpen] = ApolloHooks.useMutation(setWorkerOpenMutation);
+  const [setWorkerOpen] = useMutation(setWorkerOpenMutation);
 
   return (
     <Worker>

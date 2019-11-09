@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { ApolloProvider } from "@apollo/react-hooks";
+import { ApolloProvider } from "react-apollo";
 import client from "../../graphql/apolloClient";
 import WorkerList from "../WorkerList";
 import WorkerCreateEdit from "../WorkerCreateEdit";

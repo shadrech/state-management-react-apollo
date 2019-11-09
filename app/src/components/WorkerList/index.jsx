@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "react-apollo";
 import Worker from "../Worker";
 import { StyledLink, WorkersWrapper } from "./styles";
 import { Wrapper } from "../App/styles";
